@@ -1,0 +1,12 @@
+services:
+  - type: worker
+    name: stock-pusher  # 项目名称，每个项目用不同名称
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python new_stock_pusher.py
+    envVars:
+      - key: WECHAT_WEBHOOK
+        value: ""  # 后续在Render控制台填写
+      - key: TEST_MODE
+        value: "false"  # 测试时改为true
+    region: oregon  # 选择美国俄勒冈州区域，连接稳定
